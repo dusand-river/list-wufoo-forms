@@ -8,12 +8,15 @@ import {
   Td,
   TableCaption,
   TableContainer,
+  Button,
+  HStack,
 } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import { Form } from "../hooks/useForms";
 import useFormEntries from "../hooks/useFormEntries";
 import useFormFields from "../hooks/useFormFields";
 import mapEntries, { IEntry } from "../services/mapper";
+import { BsDownload } from "react-icons/bs";
 
 interface IFormEntriesProps {
   form: Form;
@@ -34,15 +37,26 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
   let table: IEntry[] = [];
   if (isLoadingEntries === false && isLoadingFields === false) {
     table = mapEntries({ fields: fields, entries: entries });
-    //console.log(table);
   }
+
+  const handleDownload = () => {
+    console.log("Download pressed");
+  };
 
   return (
     <>
-      <Heading marginBottom={3} fontSize="3xl">
-        Form {form?.Name} Entries
-      </Heading>
-
+      <HStack marginBottom={3} justifyContent={"space-around"}>
+        <Heading fontSize="3xl">Form {form?.Name} Entries</Heading>
+        {table.length > 0 && (
+          <Button
+            onClick={handleDownload}
+            size={"md"}
+            rightIcon={<BsDownload />}
+          >
+            Download
+          </Button>
+        )}
+      </HStack>
       <TableContainer>
         <Table variant="simple">
           <Thead>
