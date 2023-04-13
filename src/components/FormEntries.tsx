@@ -10,6 +10,7 @@ import {
   TableContainer,
   Button,
   HStack,
+  Spinner,
 } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import { Form } from "../hooks/useForms";
@@ -41,12 +42,25 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
 
   const handleDownload = () => {
     console.log("Download pressed");
+    // map all fields
+    // download
   };
 
   return (
     <>
       <HStack marginBottom={3} justifyContent={"space-around"}>
-        <Heading fontSize="3xl">Form {form?.Name} Entries</Heading>
+        {isLoadingEntries && (
+          <Spinner
+            as="span"
+            animation="border"
+            size="lg"
+            role="status"
+            aria-hidden="true"
+          />
+        )}
+        {!isLoadingEntries && (
+          <Heading fontSize="3xl">Form {form?.Name} Entries</Heading>
+        )}
         {table.length > 0 && (
           <Button
             onClick={handleDownload}
