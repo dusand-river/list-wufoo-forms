@@ -18,6 +18,7 @@ import useFormEntries from "../hooks/useFormEntries";
 import useFormFields from "../hooks/useFormFields";
 import mapEntries, { IEntry } from "../services/mapper";
 import { BsDownload } from "react-icons/bs";
+import { downloadByFileSaver } from "../services/download";
 
 interface IFormEntriesProps {
   form: Form;
@@ -42,6 +43,9 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
 
   const handleDownload = () => {
     console.log("Download pressed");
+
+    downloadByFileSaver();
+
     // map all fields
     // download
   };
