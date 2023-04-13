@@ -19,7 +19,7 @@ function App() {
         lg: `"header header" "nav main"`,
       }}
       // gridTemplateRows={"50px 1fr 30px"}
-      gridTemplateColumns={"250px 1fr"}
+      gridTemplateColumns={"300px 2fr"}
       // h="200px"
       // gap="1"
       // color="blackAlpha.700"
@@ -34,14 +34,8 @@ function App() {
         />
       </GridItem>
       <GridItem pl="2" bg="gray.700" area={"main"}>
-        {/* {selectedForm && <FormFieldsList selectedForm={selectedForm} />} */}
-        {/* <FormFieldsList selectedForm={selectedForm ? selectedForm : null} /> */}
-        {/* <FormField form={selectedForm ? selectedForm : null} /> */}
         {selectedForm && <FormEntries form={selectedForm} />}
       </GridItem>
-      {/* <GridItem pl="2" bg="blue.200" area={"footer"}>
-        {selectedForm && <FormEntries form={selectedForm} />}
-      </GridItem> */}
     </Grid>
   );
 }

@@ -38,17 +38,18 @@ const FormsList = ({ onSelectForm, selectedForm }: Props) => {
         {forms.map((form) => (
           <ListItem key={form.Name}>
             <HStack>
-              <Image
+              {/* <Image
                 boxSize="28px"
                 borderRadius={8}
                 src={isInactive(form) ? thumbsUp : cancel}
-              />
+              /> */}
               <Button
                 whiteSpace="normal"
                 textAlign="left"
                 fontWeight={
                   form.Name === selectedForm?.Name ? "bold" : "normal"
                 }
+                color={isInactive(form) ? "green.200" : "red.200"}
                 onClick={() => onSelectForm(form)}
                 fontSize="lg"
                 variant="link"
