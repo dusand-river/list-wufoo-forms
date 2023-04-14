@@ -16,7 +16,7 @@ import { Heading } from "@chakra-ui/react";
 import { Form } from "../hooks/useForms";
 import useFormEntries from "../hooks/useFormEntries";
 import useFormFields from "../hooks/useFormFields";
-import mapEntries, { IEntry } from "../services/mapper";
+import mapEntries, { IEntry, getName } from "../services/mapper";
 import { BsDownload } from "react-icons/bs";
 import downloadFile from "../services/download";
 
@@ -86,9 +86,10 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
                 return (
                   <Tr key={line.boatName}>
                     <Td>
-                      {line.lastName
+                      {getName(line?.lastName, line?.firstName)}
+                      {/* {line.lastName
                         ? `${line.lastName.toUpperCase()}, ${line.firstName?.toUpperCase()}`
-                        : line.firstName?.toUpperCase()}
+                        : line.firstName?.toUpperCase()} */}
                     </Td>
                     <Td>{line.boatName}</Td>
                     <Td>{line.class}</Td>

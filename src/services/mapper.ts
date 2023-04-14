@@ -1,4 +1,5 @@
 import { FormFields } from "../hooks/useFormFields";
+import { capitalizeFirstLetters } from "./text";
 
 export interface IEntry {
   name?: string;
@@ -76,16 +77,10 @@ export const mapEntries = ({ fields, entries }: ImapEntriesProps): IEntry[] => {
 
   const msf = getMapperSimpleFields(fields);
 
-  //     if (entries.length > 0) {
-  //     const mappedLine = mapEntry(entries[0], msf);
-  //     lines.push(mappedLine);
-  //   }
-  //  TEST
   for (let i = 0; i < entries.length; i++) {
     const mappedLine = mapEntry(entries[i], msf);
     lines.push(mappedLine);
   }
-
   return lines;
 };
 
@@ -102,14 +97,29 @@ const mapEntry = (
       return field.Title === Map[fld];
     });
     row = row1!;
-    //console.log(row);
+
     if (row) {
       const idx = row?.ID;
       mapped[fld] = entry[idx!];
     }
   }
-  //  console.log("mapped:", mapped);
+  // generate name
+  mapped.name = capitalizeFirstLetters(
+    !mapped.lastName
+      ? mapped.firstName
+      : `${mapped.lastName}, ${mapped.firstName}`
+  );
+  mapped.name = getName(mapped.lastName, mapped.firstName);
   return mapped;
+};
+
+export const getName = (
+  lastName: string | undefined,
+  firstName: string | undefined
+) => {
+  return capitalizeFirstLetters(
+    !lastName ? firstName : `${lastName}, ${firstName}`
+  );
 };
 
 export default mapEntries;
