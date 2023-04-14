@@ -10,6 +10,12 @@ export interface IEntry {
   lastName?: string;
   phrfNFS?: string;
   phrfFS?: string;
+  homePhone?: string;
+  cellPhone?: string;
+  bhycId?: string;
+  insuranceCompany?: string;
+  insurancePolicyNumber?: string;
+  phrfCertificate?: string;
 }
 
 const Map: { [key: string]: string } = {
@@ -22,6 +28,12 @@ const Map: { [key: string]: string } = {
   phrfFS: "Flying Sails ASP",
   phrfNFS: "Non-Flying Sails ASP",
   name: "Name",
+  homePhone: "Home Phone Number",
+  cellPhone: "Cell Phone Number",
+  bhycId: "Membership Number",
+  insuranceCompany: "Insurance Company",
+  insurancePolicyNumber: "Policy Number",
+  phrfCertificate: "PHRF Certificate Number",
 };
 
 interface ImapEntriesProps {

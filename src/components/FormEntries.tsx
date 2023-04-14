@@ -44,7 +44,7 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
   const handleDownload = () => {
     console.log("Download pressed");
 
-    downloadByFileSaver();
+    downloadByFileSaver(table);
 
     // map all fields
     // download
