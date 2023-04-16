@@ -49,7 +49,7 @@ const FormsList = ({ onSelectForm, selectedForm }: Props) => {
                 fontWeight={
                   form.Name === selectedForm?.Name ? "bold" : "normal"
                 }
-                color={isInactive(form) ? "green.200" : "red.200"}
+                color={isInactive(form) ? "green.300" : "orange.300"}
                 onClick={() => onSelectForm(form)}
                 fontSize="lg"
                 variant="link"

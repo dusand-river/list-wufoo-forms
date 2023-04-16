@@ -42,10 +42,8 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
   useEffect(() => {
     // set current Form
     const idx = currentActiveForms.indexOf(form.Url);
-    console.log("idx", idx);
     if (currentActiveForms.indexOf(form.Url) >= 0) setActiveForm(true);
     else setActiveForm(false);
-    console.log("idx", idx, activeForm);
   }, [form]);
   let table: IEntry[] = [];
   if (isLoadingEntries === false && isLoadingFields === false) {
@@ -97,9 +95,9 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
             {table &&
               table.map((line: IEntry) => {
                 return (
-                  <Tr key={`${line.boatName}+${line.name}`}>
+                  <Tr key={`${line.boat}+${line.name}`}>
                     <Td>{getName(line?.lastName, line?.firstName)}</Td>
-                    <Td>{line.boatName}</Td>
+                    <Td>{line.boat}</Td>
                     <Td>{line.class}</Td>
                     <Td>{line.sailNo}</Td>
                     {activeForm && <Td>{line.rating}</Td>}

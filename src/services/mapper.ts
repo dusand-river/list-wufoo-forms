@@ -5,7 +5,7 @@ import { capitalizeFirstLetters } from "./text";
 export interface IEntry {
   bhycId?: string;
   name?: string;
-  boatName?: string;
+  boat?: string;
   class?: string;
   sailNo?: string;
   fleet?: string;
@@ -28,7 +28,7 @@ export interface IEntry {
 export const Map: { [key: string]: string } = {
   bhycId: "Membership Number",
   name: "Name",
-  boatName: "Boat Name",
+  boat: "Boat Name",
   class: "Make/Model",
   sailNo: "Sail Number",
   email: "Email",
@@ -113,7 +113,7 @@ const mapEntry = (
 
   // generated fields
   mapped.name = getName(mapped.lastName, mapped.firstName);
-  mapped.boatName = capitalizeFirstLetters(mapped.boatName);
+  mapped.boat = capitalizeFirstLetters(mapped.boat);
   // phone
   mapped.phone = getPhone(mapped.homePhone, mapped.cellPhone);
 

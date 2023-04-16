@@ -3,6 +3,7 @@
 import { saveAs } from "file-saver";
 import dayjs from "dayjs";
 import { IEntry } from "./mapper";
+import { capitalizeFirstLetters, toPascalCase } from "./text";
 
 const downloadFile = (table: IEntry[], formName: string) => {
   const lines = tableToCsv(table);
@@ -46,9 +47,11 @@ const setCsvHeader = (element: IEntry) => {
   let header: string = "";
   for (property in element) {
     if (header === "") {
-      header = `${delimiter.wrap}${property}${delimiter.wrap}`;
+      header = `${delimiter.wrap}${toPascalCase(property)}${delimiter.wrap}`;
     } else
-      header = `${header}${delimiter.field}${delimiter.wrap}${property}${delimiter.wrap}`;
+      header = `${header}${delimiter.field}${delimiter.wrap}${toPascalCase(
+        property
+      )}${delimiter.wrap}`;
   }
   header = `${header}${delimiter.eol}`;
   return header;
