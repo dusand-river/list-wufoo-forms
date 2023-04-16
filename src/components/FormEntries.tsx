@@ -19,6 +19,8 @@ import useFormFields from "../hooks/useFormFields";
 import mapEntries, { IEntry, getName } from "../services/mapper";
 import { BsDownload } from "react-icons/bs";
 import downloadFile from "../services/download";
+import { useEffect, useState } from "react";
+import { currentActiveForms } from "../config/api";
 
 interface IFormEntriesProps {
   form: Form;
@@ -35,7 +37,16 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
     error: errFields,
     isLoading: isLoadingFields,
   } = useFormFields(form);
+  const [activeForm, setActiveForm] = useState(false);
 
+  useEffect(() => {
+    // set current Form
+    const idx = currentActiveForms.indexOf(form.Url);
+    console.log("idx", idx);
+    if (currentActiveForms.indexOf(form.Url) >= 0) setActiveForm(true);
+    else setActiveForm(false);
+    console.log("idx", idx, activeForm);
+  }, [form]);
   let table: IEntry[] = [];
   if (isLoadingEntries === false && isLoadingFields === false) {
     table = mapEntries({ fields: fields, entries: entries });
@@ -78,21 +89,21 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
               <Th>Boat Name</Th>
               <Th>Class</Th>
               <Th>Sail number</Th>
-              <Th>Rating</Th>
-              <Th>Fleet</Th>
+              {activeForm && <Th>Rating</Th>}
+              {activeForm && <Th>Fleet</Th>}
             </Tr>
           </Thead>
           <Tbody>
             {table &&
               table.map((line: IEntry) => {
                 return (
-                  <Tr key={line.boatName}>
+                  <Tr key={`${line.boatName}+${line.name}`}>
                     <Td>{getName(line?.lastName, line?.firstName)}</Td>
                     <Td>{line.boatName}</Td>
                     <Td>{line.class}</Td>
                     <Td>{line.sailNo}</Td>
-                    <Td>{line.rating}</Td>
-                    <Td>{line.fleet}</Td>
+                    {activeForm && <Td>{line.rating}</Td>}
+                    {activeForm && <Td>{line.fleet}</Td>}
                   </Tr>
                 );
               })}

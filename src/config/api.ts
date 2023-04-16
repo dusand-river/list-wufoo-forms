@@ -19,6 +19,8 @@ const settings = [
   },
 ];
 
+export const currentActiveForms = ["bhyc-club-racing-series-2023"];
+
 const getSetting = (id: string) => {
   return settings.filter((item) => item.id === id)[0];
 };
