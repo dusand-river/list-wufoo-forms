@@ -20,6 +20,7 @@ const tableToCsv = (table: IEntry[]) => {
   let header: string = "";
   let line: string = "";
   let lines: string[] = [];
+
   for (let ii = 0; ii < table.length; ii++) {
     const element = table[ii];
 

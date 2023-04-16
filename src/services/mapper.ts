@@ -1,40 +1,47 @@
 import { FormFields } from "../hooks/useFormFields";
+import setAdditionalSailwaveFields from "./sailwave";
 import { capitalizeFirstLetters } from "./text";
 
 export interface IEntry {
+  bhycId?: string;
   name?: string;
-  email?: string;
   boatName?: string;
   class?: string;
   sailNo?: string;
+  fleet?: string;
+  rating?: string;
+  division?: number;
+  email?: string;
+  phone?: string;
   firstName?: string;
   lastName?: string;
   phrfNFS?: string;
   phrfFS?: string;
   homePhone?: string;
   cellPhone?: string;
-  bhycId?: string;
   insuranceCompany?: string;
   insurancePolicyNumber?: string;
   phrfCertificate?: string;
+  selectionFleet?: string;
 }
 
-const Map: { [key: string]: string } = {
-  firstName: "First",
-  lastName: "Last",
+export const Map: { [key: string]: string } = {
+  bhycId: "Membership Number",
+  name: "Name",
   boatName: "Boat Name",
+  class: "Make/Model",
   sailNo: "Sail Number",
   email: "Email",
-  class: "Make/Model",
+  firstName: "First",
+  lastName: "Last",
   phrfFS: "Flying Sails ASP",
   phrfNFS: "Non-Flying Sails ASP",
-  name: "Name",
   homePhone: "Home Phone Number",
   cellPhone: "Cell Phone Number",
-  bhycId: "Membership Number",
   insuranceCompany: "Insurance Company",
   insurancePolicyNumber: "Policy Number",
   phrfCertificate: "PHRF Certificate Number",
+  selectionFleet: "Flying Sails (includes PHRF Certificate)",
 };
 
 interface ImapEntriesProps {
@@ -103,14 +110,15 @@ const mapEntry = (
       mapped[fld] = entry[idx!];
     }
   }
-  // generate name
-  mapped.name = capitalizeFirstLetters(
-    !mapped.lastName
-      ? mapped.firstName
-      : `${mapped.lastName}, ${mapped.firstName}`
-  );
+
+  // generated fields
   mapped.name = getName(mapped.lastName, mapped.firstName);
-  return mapped;
+  mapped.boatName = capitalizeFirstLetters(mapped.boatName);
+  // phone
+  mapped.phone = getPhone(mapped.homePhone, mapped.cellPhone);
+
+  return setAdditionalSailwaveFields(mapped);
+  // return mapped;
 };
 
 export const getName = (
@@ -120,6 +128,10 @@ export const getName = (
   return capitalizeFirstLetters(
     !lastName ? firstName : `${lastName}, ${firstName}`
   );
+};
+const getPhone = (home: string | undefined, mobile: string | undefined) => {
+  if (mobile) return mobile;
+  return home ? home : "";
 };
 
 export default mapEntries;
