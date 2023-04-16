@@ -33,7 +33,7 @@ function App() {
           onSelectForm={(form) => setSelectedForm(form)}
         />
       </GridItem>
-      <GridItem pl="2" bg="gray.700" area={"main"}>
+      <GridItem pl="2" area={"main"}>
         {selectedForm && <FormEntries form={selectedForm} />}
       </GridItem>
     </Grid>

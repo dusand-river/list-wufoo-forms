@@ -78,6 +78,8 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
               <Th>Boat Name</Th>
               <Th>Class</Th>
               <Th>Sail number</Th>
+              <Th>Rating</Th>
+              <Th>Fleet</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -85,15 +87,12 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
               table.map((line: IEntry) => {
                 return (
                   <Tr key={line.boatName}>
-                    <Td>
-                      {getName(line?.lastName, line?.firstName)}
-                      {/* {line.lastName
-                        ? `${line.lastName.toUpperCase()}, ${line.firstName?.toUpperCase()}`
-                        : line.firstName?.toUpperCase()} */}
-                    </Td>
+                    <Td>{getName(line?.lastName, line?.firstName)}</Td>
                     <Td>{line.boatName}</Td>
                     <Td>{line.class}</Td>
                     <Td>{line.sailNo}</Td>
+                    <Td>{line.rating}</Td>
+                    <Td>{line.fleet}</Td>
                   </Tr>
                 );
               })}
