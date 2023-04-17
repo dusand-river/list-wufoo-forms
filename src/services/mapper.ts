@@ -23,6 +23,7 @@ export interface IEntry {
   insurancePolicyNumber?: string;
   phrfCertificate?: string;
   selectionFleet?: string;
+  [key: string]: any;
 }
 
 export const Map: { [key: string]: string } = {

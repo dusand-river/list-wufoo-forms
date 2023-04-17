@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import { currentActiveForms } from "../config/api";
 import TableHead from "./entries/TableHead";
 import TableBody from "./entries/TableBody";
-import { displayColumns } from "../config/table";
+import { ITableColumn, displayColumns } from "../config/table";
 
 interface IFormEntriesProps {
   form: Form;
@@ -33,18 +33,29 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
     error: errFields,
     isLoading: isLoadingFields,
   } = useFormFields(form);
-  const [activeForm, setActiveForm] = useState(false);
+  const [active, setActive] = useState(false);
+  const [columns, setColumns] = useState<ITableColumn[]>([]);
 
   useEffect(() => {
-    // set current Form
     const idx = currentActiveForms.indexOf(form.Url);
-    if (currentActiveForms.indexOf(form.Url) >= 0) setActiveForm(true);
-    else setActiveForm(false);
+    if (currentActiveForms.indexOf(form.Url) >= 0) {
+      // set current Form
+      setActive(true);
+      // set columns for active form
+      const newCols = displayColumns.map((col) => {
+        if (col.active === false) col.active = true;
+        return col;
+      });
+      setColumns(newCols);
+    } else {
+      setActive(false);
+      setColumns(displayColumns);
+    }
   }, [form]);
+
   let table: IEntry[] = [];
   if (isLoadingEntries === false && isLoadingFields === false) {
     table = mapEntries({ fields: fields, entries: entries });
-    //console.log(Object.keys(table[0]));
   }
 
   const handleDownload = () => {
@@ -78,12 +89,8 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
       </HStack>
       <TableContainer>
         <Table variant="simple">
-          <TableHead columns={displayColumns} activeForm={activeForm} />
-          <TableBody
-            table={table}
-            columns={displayColumns}
-            active={activeForm}
-          />
+          <TableHead columns={columns} active={active} />
+          <TableBody tableData={table} columns={columns} active={active} />
         </Table>
       </TableContainer>
     </>

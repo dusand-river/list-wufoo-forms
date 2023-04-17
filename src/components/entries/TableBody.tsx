@@ -5,14 +5,31 @@ import { ITableColumn } from "../../config/table";
 
 interface ITableBodyProps {
   columns: ITableColumn[];
-  table: IEntry[];
+  tableData: IEntry[];
   active: boolean;
 }
 
-const TableBody: React.FC<ITableBodyProps> = ({ columns, table, active }) => {
+const TableBody: React.FC<ITableBodyProps> = ({
+  columns,
+  tableData,
+  active,
+}) => {
+  //console.log("TableBody", active, columns);
   return (
     <Tbody>
-      {table &&
+      {tableData &&
+        tableData.map((data: IEntry, row) => {
+          const rowId = data.bhycId ? data.bhycId : row;
+          return (
+            <tr key={rowId}>
+              {columns.map((column: ITableColumn, colIdx) => {
+                const mapped = data[column.key] ? data[column.key] : "——";
+                return column.active ? <td key={colIdx}>{mapped}</td> : null;
+              })}
+            </tr>
+          );
+        })}
+      {/* {table &&
         table.map((line: IEntry) => {
           return (
             <Tr key={`${line.boat}+${line.name}`}>
@@ -24,7 +41,7 @@ const TableBody: React.FC<ITableBodyProps> = ({ columns, table, active }) => {
               {active && <Td>{line.fleet}</Td>}
             </Tr>
           );
-        })}
+        })} */}
     </Tbody>
   );
 };
