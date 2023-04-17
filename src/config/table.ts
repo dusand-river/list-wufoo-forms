@@ -13,13 +13,6 @@ const displayColumns: ITableColumn[] = [
   { key: "fleet", label: "Fleet", sortable: true, active: false },
 ];
 
-export const setActiveColumns = (active: boolean): ITableColumn[] => {
-  const cols = [...getDisplayColumns()];
-  cols.forEach((column) => {
-    active ? (column.active = true) : column.active;
-  });
-  return cols;
-};
 export const getActiveColumns = (active: boolean): ITableColumn[] => {
   const cols = displayColumns.filter((column, index) => {
     if (active === true) return true;

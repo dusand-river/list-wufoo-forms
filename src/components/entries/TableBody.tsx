@@ -6,7 +6,6 @@ import { ITableColumn } from "../../config/table";
 interface ITableBodyProps {
   columns: ITableColumn[];
   tableData: IEntry[];
-  // active: boolean;
 }
 
 const TableBody: React.FC<ITableBodyProps> = ({
@@ -20,29 +19,13 @@ const TableBody: React.FC<ITableBodyProps> = ({
         tableData.map((data: IEntry, row) => {
           const rowId = data.bhycId ? data.bhycId : row;
           return (
-            <tr key={rowId}>
+            <Tr key={rowId}>
               {columns.map((column: ITableColumn, colIdx) => {
-                return <td key={colIdx}>{data[column.key]}</td>;
-                // return column.active ? (
-                //   <td key={colIdx}>{data[column.key]}</td>
-                // ) : null;
+                return <Td key={colIdx}>{data[column.key]}</Td>;
               })}
-            </tr>
-          );
-        })}
-      {/* {table &&
-        table.map((line: IEntry) => {
-          return (
-            <Tr key={`${line.boat}+${line.name}`}>
-              <Td>{getName(line?.lastName, line?.firstName)}</Td>
-              <Td>{line.boat}</Td>
-              <Td>{line.class}</Td>
-              <Td>{line.sailNo}</Td>
-              {active && <Td>{line.rating}</Td>}
-              {active && <Td>{line.fleet}</Td>}
             </Tr>
           );
-        })} */}
+        })}
     </Tbody>
   );
 };
