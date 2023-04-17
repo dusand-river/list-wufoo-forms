@@ -21,6 +21,8 @@ import { BsDownload } from "react-icons/bs";
 import downloadFile from "../services/download";
 import { useEffect, useState } from "react";
 import { currentActiveForms } from "../config/api";
+import TableHead from "./entries/TableHead";
+import TableBody from "./entries/TableBody";
 
 interface IFormEntriesProps {
   form: Form;
@@ -81,31 +83,8 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
       </HStack>
       <TableContainer>
         <Table variant="simple">
-          <Thead>
-            <Tr>
-              <Th>Helm Name</Th>
-              <Th>Boat Name</Th>
-              <Th>Class</Th>
-              <Th>Sail number</Th>
-              {activeForm && <Th>Rating</Th>}
-              {activeForm && <Th>Fleet</Th>}
-            </Tr>
-          </Thead>
-          <Tbody>
-            {table &&
-              table.map((line: IEntry) => {
-                return (
-                  <Tr key={`${line.boat}+${line.name}`}>
-                    <Td>{getName(line?.lastName, line?.firstName)}</Td>
-                    <Td>{line.boat}</Td>
-                    <Td>{line.class}</Td>
-                    <Td>{line.sailNo}</Td>
-                    {activeForm && <Td>{line.rating}</Td>}
-                    {activeForm && <Td>{line.fleet}</Td>}
-                  </Tr>
-                );
-              })}
-          </Tbody>
+          <TableHead activeForm={activeForm} />
+          <TableBody table={table} active={activeForm} />
         </Table>
       </TableContainer>
     </>
