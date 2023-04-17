@@ -4,7 +4,7 @@ export interface ITableColumn {
   sortable: boolean;
   active: boolean;
 }
-export const displayColumns: ITableColumn[] = [
+const displayColumns: ITableColumn[] = [
   { key: "name", label: "Helm Name", sortable: true, active: true },
   { key: "boat", label: "Boat Name", sortable: true, active: true },
   { key: "class", label: "Class", sortable: true, active: true },
@@ -12,3 +12,15 @@ export const displayColumns: ITableColumn[] = [
   { key: "rating", label: "Rating", sortable: false, active: false },
   { key: "fleet", label: "Fleet", sortable: true, active: false },
 ];
+
+// export const setColumnVisibility = (active: boolean): ITableColumn[] => {
+//   const newCols = displayColumns.map((col) => {
+//     if (col.active === false) col.active = true;
+//     return col;
+//   });
+//   return newCols;
+// };
+
+export const getDisplayColumns = (): ITableColumn[] => {
+  return displayColumns;
+};

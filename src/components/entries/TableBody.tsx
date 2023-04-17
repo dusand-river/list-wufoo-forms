@@ -14,7 +14,6 @@ const TableBody: React.FC<ITableBodyProps> = ({
   tableData,
   active,
 }) => {
-  //console.log("TableBody", active, columns);
   return (
     <Tbody>
       {tableData &&
@@ -23,8 +22,9 @@ const TableBody: React.FC<ITableBodyProps> = ({
           return (
             <tr key={rowId}>
               {columns.map((column: ITableColumn, colIdx) => {
-                const mapped = data[column.key] ? data[column.key] : "——";
-                return column.active ? <td key={colIdx}>{mapped}</td> : null;
+                return column.active ? (
+                  <td key={colIdx}>{data[column.key]}</td>
+                ) : null;
               })}
             </tr>
           );
