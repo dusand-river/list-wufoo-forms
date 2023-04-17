@@ -1,13 +1,15 @@
 import React from "react";
 import { Tbody, Tr, Td } from "@chakra-ui/react";
 import { IEntry, getName } from "../../services/mapper";
+import { ITableColumn } from "../../config/table";
 
 interface ITableBodyProps {
+  columns: ITableColumn[];
   table: IEntry[];
   active: boolean;
 }
 
-const TableBody: React.FC<ITableBodyProps> = ({ table, active }) => {
+const TableBody: React.FC<ITableBodyProps> = ({ columns, table, active }) => {
   return (
     <Tbody>
       {table &&

@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { currentActiveForms } from "../config/api";
 import TableHead from "./entries/TableHead";
 import TableBody from "./entries/TableBody";
+import { displayColumns } from "../config/table";
 
 interface IFormEntriesProps {
   form: Form;
@@ -77,8 +78,12 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
       </HStack>
       <TableContainer>
         <Table variant="simple">
-          <TableHead activeForm={activeForm} />
-          <TableBody table={table} active={activeForm} />
+          <TableHead columns={displayColumns} activeForm={activeForm} />
+          <TableBody
+            table={table}
+            columns={displayColumns}
+            active={activeForm}
+          />
         </Table>
       </TableContainer>
     </>

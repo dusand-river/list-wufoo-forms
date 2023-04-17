@@ -1,27 +1,13 @@
 import React from "react";
 import { Thead, Tr, Th } from "@chakra-ui/react";
-
-interface ICol {
-  key: string;
-  label: string;
-  sortable: boolean;
-  active: boolean;
-}
-const columns: ICol[] = [
-  { key: "name", label: "Helm Name", sortable: true, active: true },
-  { key: "boat", label: "Boat Name", sortable: true, active: true },
-  { key: "class", label: "Class", sortable: true, active: true },
-  { key: "sailNo", label: "Sail number", sortable: true, active: true },
-  { key: "rating", label: "Rating", sortable: false, active: false },
-  { key: "fleet", label: "Fleet", sortable: true, active: false },
-];
+import { ITableColumn } from "../../config/table";
 
 interface ITableHeadProps {
   activeForm: boolean;
-  //   columns: [];
+  columns: ITableColumn[];
 }
-const TableHead: React.FC<ITableHeadProps> = ({ activeForm }) => {
-  const handleSortingChange = (column: ICol) => {
+const TableHead: React.FC<ITableHeadProps> = ({ columns, activeForm }) => {
+  const handleSortingChange = (column: ITableColumn) => {
     column.sortable
       ? console.log("Pressed", column)
       : console.log("Not Sortable");
@@ -31,7 +17,7 @@ const TableHead: React.FC<ITableHeadProps> = ({ activeForm }) => {
     <Thead>
       <Tr>
         {columns &&
-          columns.map((line: ICol) => {
+          columns.map((line: ITableColumn) => {
             line.active = activeForm;
             return line.active ? (
               <Th key={line.key} onClick={() => handleSortingChange(line)}>
