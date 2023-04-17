@@ -1,12 +1,5 @@
 import {
   Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
   TableContainer,
   Button,
   HStack,
@@ -16,7 +9,7 @@ import { Heading } from "@chakra-ui/react";
 import { Form } from "../hooks/useForms";
 import useFormEntries from "../hooks/useFormEntries";
 import useFormFields from "../hooks/useFormFields";
-import mapEntries, { IEntry, getName } from "../services/mapper";
+import mapEntries, { IEntry } from "../services/mapper";
 import { BsDownload } from "react-icons/bs";
 import downloadFile from "../services/download";
 import { useEffect, useState } from "react";
@@ -50,6 +43,7 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
   let table: IEntry[] = [];
   if (isLoadingEntries === false && isLoadingFields === false) {
     table = mapEntries({ fields: fields, entries: entries });
+    //console.log(Object.keys(table[0]));
   }
 
   const handleDownload = () => {
