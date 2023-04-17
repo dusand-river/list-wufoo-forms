@@ -6,13 +6,13 @@ import { ITableColumn } from "../../config/table";
 interface ITableBodyProps {
   columns: ITableColumn[];
   tableData: IEntry[];
-  active: boolean;
+  // active: boolean;
 }
 
 const TableBody: React.FC<ITableBodyProps> = ({
   columns,
   tableData,
-  active,
+  //active,
 }) => {
   return (
     <Tbody>
@@ -22,9 +22,10 @@ const TableBody: React.FC<ITableBodyProps> = ({
           return (
             <tr key={rowId}>
               {columns.map((column: ITableColumn, colIdx) => {
-                return column.active ? (
-                  <td key={colIdx}>{data[column.key]}</td>
-                ) : null;
+                return <td key={colIdx}>{data[column.key]}</td>;
+                // return column.active ? (
+                //   <td key={colIdx}>{data[column.key]}</td>
+                // ) : null;
               })}
             </tr>
           );

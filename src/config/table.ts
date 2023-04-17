@@ -13,13 +13,21 @@ const displayColumns: ITableColumn[] = [
   { key: "fleet", label: "Fleet", sortable: true, active: false },
 ];
 
-// export const setColumnVisibility = (active: boolean): ITableColumn[] => {
-//   const newCols = displayColumns.map((col) => {
-//     if (col.active === false) col.active = true;
-//     return col;
-//   });
-//   return newCols;
-// };
+export const setActiveColumns = (active: boolean): ITableColumn[] => {
+  const cols = [...getDisplayColumns()];
+  cols.forEach((column) => {
+    active ? (column.active = true) : column.active;
+  });
+  return cols;
+};
+export const getActiveColumns = (active: boolean): ITableColumn[] => {
+  const cols = displayColumns.filter((column, index) => {
+    if (active === true) return true;
+    return column.active;
+  });
+
+  return cols;
+};
 
 export const getDisplayColumns = (): ITableColumn[] => {
   return displayColumns;
