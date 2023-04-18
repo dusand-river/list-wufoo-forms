@@ -52,6 +52,9 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
   const handleDownload = () => {
     downloadFile(table, form?.Name);
   };
+  const handleSorting = (column: string, sortOrder: string) => {
+    console.log("Sort:", column, sortOrder);
+  };
 
   return (
     <>
@@ -78,13 +81,7 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
           </Button>
         )}
       </HStack>
-      <TableComp columns={columns} data={table} />
-      {/* <TableContainer>
-        <Table variant="simple">
-          <TableHead columns={columns} />
-          <TableBody tableData={table} columns={columns} />
-        </Table>
-      </TableContainer> */}
+      <TableComp columns={columns} data={table} handleSorting={handleSorting} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table, TableContainer } from "@chakra-ui/react";
 
 import { ITableColumn } from "../../config/table";
@@ -9,13 +9,14 @@ import TableBody from "./TableBody";
 interface ITableProps {
   columns: ITableColumn[];
   data: IEntry[];
+  handleSorting: (column: string, sortOrder: string) => void;
 }
 
-const TableComp: React.FC<ITableProps> = ({ columns, data }) => {
+const TableComp: React.FC<ITableProps> = ({ columns, data, handleSorting }) => {
   return (
     <TableContainer>
       <Table variant="simple">
-        <TableHead columns={columns} />
+        <TableHead columns={columns} handleSorting={handleSorting} />
         <TableBody tableData={data} columns={columns} />
       </Table>
     </TableContainer>
