@@ -17,6 +17,7 @@ import { currentActiveForms } from "../config/api";
 import TableHead from "./entries/TableHead";
 import TableBody from "./entries/TableBody";
 import { ITableColumn, getActiveColumns } from "../config/table";
+import TableComp from "./entries/TableComp";
 
 interface IFormEntriesProps {
   form: Form;
@@ -77,12 +78,13 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
           </Button>
         )}
       </HStack>
-      <TableContainer>
+      <TableComp columns={columns} data={table} />
+      {/* <TableContainer>
         <Table variant="simple">
           <TableHead columns={columns} />
           <TableBody tableData={table} columns={columns} />
         </Table>
-      </TableContainer>
+      </TableContainer> */}
     </>
   );
 };
