@@ -14,8 +14,6 @@ import { BsDownload } from "react-icons/bs";
 import downloadFile from "../services/download";
 import { useEffect, useState } from "react";
 import { currentActiveForms } from "../config/api";
-import TableHead from "./entries/TableHead";
-import TableBody from "./entries/TableBody";
 import { ITableColumn, getActiveColumns } from "../config/table";
 import TableComp from "./entries/TableComp";
 
@@ -52,9 +50,6 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
   const handleDownload = () => {
     downloadFile(table, form?.Name);
   };
-  const handleSorting = (column: string, sortOrder: string) => {
-    console.log("Sort:", column, sortOrder);
-  };
 
   return (
     <>
@@ -81,7 +76,7 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
           </Button>
         )}
       </HStack>
-      <TableComp columns={columns} data={table} handleSorting={handleSorting} />
+      <TableComp columns={columns} data={table} />
     </>
   );
 };

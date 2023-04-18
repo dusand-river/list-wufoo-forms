@@ -5,19 +5,33 @@ import { ITableColumn } from "../../config/table";
 import { IEntry } from "../../services/mapper";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
+import tableSort from "../../services/tableSort";
 
 interface ITableProps {
   columns: ITableColumn[];
   data: IEntry[];
-  handleSorting: (column: string, sortOrder: string) => void;
 }
 
-const TableComp: React.FC<ITableProps> = ({ columns, data, handleSorting }) => {
+const TableComp: React.FC<ITableProps> = ({ columns, data }) => {
+  const [table, setTable] = useState<IEntry[]>([]);
+
+  useEffect(() => setTable([...data]), [data]);
+
+  const handleSorting = (sortField: string, sortOrder: string) => {
+    // console.log("Sort:", sortField, sortOrder);
+    const sorted: IEntry[] = tableSort({
+      tableData: table,
+      sortField,
+      sortOrder,
+    })!;
+    setTable(sorted);
+  };
+
   return (
     <TableContainer>
       <Table variant="simple">
-        <TableHead columns={columns} handleSorting={handleSorting} />
-        <TableBody tableData={data} columns={columns} />
+        <TableHead {...{ columns, handleSorting }} />
+        <TableBody {...{ columns, data: table }} />
       </Table>
     </TableContainer>
   );

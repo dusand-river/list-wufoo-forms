@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Thead, Tr, Th } from "@chakra-ui/react";
+import { Thead, Tr, Th, Icon } from "@chakra-ui/react";
 import { ITableColumn } from "../../config/table";
+import { MdArrowUpward, MdArrowDownward } from "react-icons/md";
 
 interface ITableHeadProps {
   columns: ITableColumn[];
-  handleSorting: (column: string, sortOrder: string) => void;
+  handleSorting: (sortField: string, sortOrder: string) => void;
 }
 
 const TableHead: React.FC<ITableHeadProps> = ({ columns, handleSorting }) => {
@@ -13,7 +14,7 @@ const TableHead: React.FC<ITableHeadProps> = ({ columns, handleSorting }) => {
 
   const handleSortingChange = (column: ITableColumn) => {
     if (column.sortable) {
-      console.log("Pressed", column);
+      //console.log("Pressed", column);
       const sortOrder =
         column.key === sortField && order === "asc" ? "desc" : "asc";
       setSortField(column.key);
@@ -31,11 +32,19 @@ const TableHead: React.FC<ITableHeadProps> = ({ columns, handleSorting }) => {
           columns.map((column: ITableColumn) => {
             return (
               <Th
+                // className={cl}
                 style={{ textAlign: "left" }}
                 key={column.key}
                 onClick={() => handleSortingChange(column)}
               >
-                {column.label}
+                {`${column.label}  `}
+                {sortField === column.key && order === "asc" ? (
+                  <Icon as={MdArrowUpward} />
+                ) : sortField === column.key && order === "desc" ? (
+                  <Icon as={MdArrowDownward} />
+                ) : (
+                  ""
+                )}
               </Th>
             );
           })}

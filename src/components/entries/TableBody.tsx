@@ -5,18 +5,18 @@ import { ITableColumn } from "../../config/table";
 
 interface ITableBodyProps {
   columns: ITableColumn[];
-  tableData: IEntry[];
+  data: IEntry[];
 }
 
 const TableBody: React.FC<ITableBodyProps> = ({
   columns,
-  tableData,
+  data,
   //active,
 }) => {
   return (
     <Tbody>
-      {tableData &&
-        tableData.map((data: IEntry, row) => {
+      {data &&
+        data.map((data: IEntry, row) => {
           const rowId = data.bhycId ? data.bhycId : row;
           return (
             <Tr key={rowId}>
