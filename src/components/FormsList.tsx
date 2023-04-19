@@ -1,16 +1,5 @@
-import {
-  Heading,
-  List,
-  ListItem,
-  Text,
-  Image,
-  HStack,
-  Button,
-} from "@chakra-ui/react";
+import { Heading, List, ListItem, HStack, Button } from "@chakra-ui/react";
 
-//import inactive from "../assets/hibernation.png";
-import cancel from "../assets/cancel.png";
-import thumbsUp from "../assets/thumbs-up.webp";
 import useForms, { Form } from "../hooks/useForms";
 
 interface Props {
@@ -38,11 +27,6 @@ const FormsList = ({ onSelectForm, selectedForm }: Props) => {
         {forms.map((form) => (
           <ListItem key={form.Name}>
             <HStack>
-              {/* <Image
-                boxSize="28px"
-                borderRadius={8}
-                src={isInactive(form) ? thumbsUp : cancel}
-              /> */}
               <Button
                 whiteSpace="normal"
                 textAlign="left"
