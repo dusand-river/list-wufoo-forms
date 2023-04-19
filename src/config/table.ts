@@ -11,6 +11,12 @@ const displayColumns: ITableColumn[] = [
   { key: "sailNo", label: "Sail number", sortable: true, active: true },
   { key: "rating", label: "Rating", sortable: false, active: false },
   { key: "fleet", label: "Fleet", sortable: true, active: false },
+  {
+    key: "needPhrfCertificate",
+    label: "Need PHRF",
+    sortable: false,
+    active: false,
+  },
 ];
 
 export const getActiveColumns = (active: boolean): ITableColumn[] => {

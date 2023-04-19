@@ -23,6 +23,7 @@ export interface IEntry {
   insurancePolicyNumber?: string;
   phrfCertificate?: string;
   selectionFleet?: string;
+  needPhrfCertificate?: string;
   [key: string]: any;
 }
 

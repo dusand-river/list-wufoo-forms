@@ -14,11 +14,8 @@ interface ITableProps {
 
 const TableComp: React.FC<ITableProps> = ({ columns, data }) => {
   const [table, setTable] = useState<IEntry[]>([]);
-
   useEffect(() => setTable([...data]), [data]);
-
   const handleSorting = (sortField: string, sortOrder: string) => {
-    // console.log("Sort:", sortField, sortOrder);
     const sorted: IEntry[] = tableSort({
       tableData: table,
       sortField,
