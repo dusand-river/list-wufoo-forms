@@ -1,4 +1,4 @@
-import { Heading, List, ListItem, HStack, Button } from "@chakra-ui/react";
+import { Text, List, ListItem, HStack, Button } from "@chakra-ui/react";
 
 import useForms, { IForm } from "../hooks/useForms";
 import { useEffect } from "react";
@@ -18,9 +18,9 @@ const FormsList = ({ onSelectForm, selectedForm }: Props) => {
 
   return (
     <>
-      <Heading marginBottom={3} fontSize="2xl">
+      <Text marginBottom={3} fontSize="3xl">
         Forms
-      </Heading>
+      </Text>
 
       <List>
         {forms.map((form) => (
@@ -34,7 +34,7 @@ const FormsList = ({ onSelectForm, selectedForm }: Props) => {
                 }
                 color={isActive(form) ? "green.300" : "orange.300"}
                 onClick={() => onSelectForm(form)}
-                fontSize="lg"
+                fontSize="md"
                 variant="link"
               >
                 {form.Name}
