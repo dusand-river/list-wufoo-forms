@@ -6,7 +6,7 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
-import { Form } from "../hooks/useForms";
+import { IForm } from "../hooks/useForms";
 import useFormEntries from "../hooks/useFormEntries";
 import useFormFields from "../hooks/useFormFields";
 import mapEntries, { IEntry } from "../services/mapper";
@@ -18,7 +18,7 @@ import { ITableColumn, getActiveColumns } from "../config/table";
 import TableComp from "./entries/TableComp";
 
 interface IFormEntriesProps {
-  form: Form;
+  form: IForm;
 }
 
 const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {

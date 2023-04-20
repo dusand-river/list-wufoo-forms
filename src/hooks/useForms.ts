@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/apiClient";
 import api, { API_ID } from "../config/api";
+import { getFirstActive } from "../services/forms";
 
-export interface Form {
+export interface IForm {
   Name: string;
   Description: string;
   Hash: string;
@@ -13,9 +14,10 @@ export interface Form {
 }
 
 const useForms = () => {
-  const [forms, setForms] = useState<Form[]>([]);
+  const [forms, setForms] = useState<IForm[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [firstActive, setFirstActive] = useState<IForm>();
 
   useEffect(() => {
     const controler = new AbortController();
@@ -29,6 +31,7 @@ const useForms = () => {
       .then((res) => {
         setForms(res.data.Forms);
         setLoading(false);
+        setFirstActive(getFirstActive(res.data.Forms));
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;
@@ -39,7 +42,7 @@ const useForms = () => {
     return () => controler.abort(); //to cancel first call in dev
   }, []);
 
-  return { forms, error, isLoading };
+  return { forms, error, isLoading, firstActive };
 };
 
 export default useForms;
