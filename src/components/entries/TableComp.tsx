@@ -7,6 +7,7 @@ import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 import tableSort from "../../services/tableSort";
 //import useSortableTable from "./useSortableTable";
+//import useSortableTable from "./useSortableTable";
 
 interface ITableProps {
   columns: ITableColumn[];
@@ -15,6 +16,7 @@ interface ITableProps {
 
 const TableComp: React.FC<ITableProps> = ({ columns, data }) => {
   // const [tableData, handleSorting] = useSortableTable(data);
+  // const { sortedTable: table, sort: handleSorting } = useSortableTable(data);
 
   const [table, setTable] = useState<IEntry[]>([]);
   useEffect(() => setTable([...data]), [data]);
