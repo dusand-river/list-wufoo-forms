@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 //import useFormFields, { FormFields } from "../hooks/useFormFields";
-import { Form } from "../hooks/useForms";
+import { IForm } from "../hooks/useForms";
 import apiClient, { CanceledError } from "../services/apiClient";
 import api, { API_ID } from "../config/api";
 import { Heading, List, ListItem, Text } from "@chakra-ui/react";
@@ -14,7 +14,7 @@ import { FormFields } from "../hooks/useFormFields";
 // }
 
 interface Props {
-  form: Form | null;
+  form: IForm | null;
 }
 
 const FormField = ({ form }: Props) => {

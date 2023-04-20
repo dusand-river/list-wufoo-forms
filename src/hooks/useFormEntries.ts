@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/apiClient";
 import api, { API_ID } from "../config/api";
-import { Form } from "./useForms";
+import { IForm } from "./useForms";
 
 // export interface Entries {
 //   : string;
@@ -9,7 +9,7 @@ import { Form } from "./useForms";
 //   isRequired: string;
 // }
 
-const useFormFields = (form: Form) => {
+const useFormFields = (form: IForm) => {
   const [entries, setEntries] = useState<[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);

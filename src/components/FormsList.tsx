@@ -1,21 +1,20 @@
 import { Heading, List, ListItem, HStack, Button } from "@chakra-ui/react";
 
-import useForms, { Form } from "../hooks/useForms";
+import useForms, { IForm } from "../hooks/useForms";
+import { useEffect } from "react";
+import { isActive } from "../services/forms";
 
 interface Props {
-  onSelectForm: (form: Form) => void;
-  selectedForm: Form | null;
+  onSelectForm: (form: IForm) => void;
+  selectedForm: IForm | null;
 }
 
 const FormsList = ({ onSelectForm, selectedForm }: Props) => {
-  const { forms, error, isLoading } = useForms();
+  const { forms, error, isLoading, firstActive } = useForms();
 
-  const isInactive = (form: Form): boolean => {
-    const start = new Date(form.StartDate);
-    const end = new Date(form.EndDate);
-    const today = new Date();
-    return start <= today && today < end;
-  };
+  useEffect(() => {
+    if (firstActive && !selectedForm) onSelectForm(firstActive);
+  }, [firstActive]);
 
   return (
     <>
@@ -33,7 +32,7 @@ const FormsList = ({ onSelectForm, selectedForm }: Props) => {
                 fontWeight={
                   form.Name === selectedForm?.Name ? "bold" : "normal"
                 }
-                color={isInactive(form) ? "green.300" : "orange.300"}
+                color={isActive(form) ? "green.300" : "orange.300"}
                 onClick={() => onSelectForm(form)}
                 fontSize="lg"
                 variant="link"

@@ -3,11 +3,11 @@ import "./App.css";
 import { Grid, GridItem } from "@chakra-ui/react";
 import Header from "./components/Header";
 import FormsList from "./components/FormsList";
-import { Form } from "./hooks/useForms";
+import { IForm } from "./hooks/useForms";
 import FormEntries from "./components/FormEntries";
 
 function App() {
-  const [selectedForm, setSelectedForm] = useState<Form | null>(null);
+  const [selectedForm, setSelectedForm] = useState<IForm | null>(null);
 
   return (
     <Grid
