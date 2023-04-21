@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Table, TableContainer } from "@chakra-ui/react";
 
 import { ITableColumn } from "../../config/table";
-import { IEntry } from "../../services/mapper";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
-import tableSort from "../../services/tableSort";
-//import useSortableTable from "./useSortableTable";
-//import useSortableTable from "./useSortableTable";
+import useSortableTable, { TTable } from "./useSortableTable";
 
-interface ITableProps {
+interface ITableCompProps {
   columns: ITableColumn[];
-  data: IEntry[];
+  data: TTable;
 }
-
-const TableComp: React.FC<ITableProps> = ({ columns, data }) => {
-  // const [tableData, handleSorting] = useSortableTable(data);
-  // const { sortedTable: table, sort: handleSorting } = useSortableTable(data);
-
-  const [table, setTable] = useState<IEntry[]>([]);
-  useEffect(() => setTable([...data]), [data]);
-  const handleSorting = (sortField: string, sortOrder: string) => {
-    const sorted: IEntry[] = tableSort({
-      tableData: table,
-      sortField,
-      sortOrder,
-    })!;
-    setTable(sorted);
-  };
+const TableComp: React.FC<ITableCompProps> = ({ columns, data }) => {
+  const { sortedTable: table, sort: handleSorting } = useSortableTable(data);
 
   return (
     <TableContainer>
