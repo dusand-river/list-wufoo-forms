@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Thead, Tr, Th, Icon } from "@chakra-ui/react";
 import { ITableColumn } from "../../config/table";
 import { MdArrowUpward, MdArrowDownward } from "react-icons/md";
-import { SortOrder } from "./useSortableTable";
+import { TSortOrder } from "./useSortableTable";
 
 interface ITableHeadProps {
   columns: ITableColumn[];
-  handleSorting: (sortField: string, sortOrder: SortOrder) => void;
+  handleSorting: (sortField: string, sortOrder: TSortOrder) => void;
 }
 
 const TableHead: React.FC<ITableHeadProps> = ({ columns, handleSorting }) => {
@@ -16,7 +16,8 @@ const TableHead: React.FC<ITableHeadProps> = ({ columns, handleSorting }) => {
   const handleSortingChange = (column: ITableColumn) => {
     if (column.sortable) {
       //console.log("Pressed", column);
-      const sortOrder = column.key === sortField && order === "asc" ? "desc" : "asc";
+      const sortOrder =
+        column.key === sortField && order === "asc" ? "desc" : "asc";
       setSortField(column.key);
       setOrder(sortOrder);
       handleSorting(column.key, sortOrder);
