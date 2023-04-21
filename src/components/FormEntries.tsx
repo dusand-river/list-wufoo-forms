@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableContainer,
-  Button,
-  HStack,
-  Spinner,
-} from "@chakra-ui/react";
-import { Heading } from "@chakra-ui/react";
+import { Text, Button, HStack, Spinner } from "@chakra-ui/react";
 import { IForm } from "../hooks/useForms";
 import useFormEntries from "../hooks/useFormEntries";
 import useFormFields from "../hooks/useFormFields";
@@ -53,7 +46,7 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
 
   return (
     <>
-      <HStack marginBottom={3} justifyContent={"space-around"}>
+      <HStack marginBottom={3} justifyContent={"space-evenly"}>
         {isLoadingEntries && (
           <Spinner
             as="span"
@@ -64,7 +57,9 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
           />
         )}
         {!isLoadingEntries && (
-          <Heading fontSize="3xl">{form?.Name} Entries</Heading>
+          <Text color="blue.200" fontSize="3xl">
+            {form?.Name}
+          </Text>
         )}
         {table.length > 0 && (
           <Button
