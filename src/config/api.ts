@@ -20,6 +20,7 @@ const settings = [
 ];
 
 export const currentActiveForms = ["bhyc-club-racing-series-2023"];
+export const currentDefaultForDisplay = "bhyc-club-racing-series-2023";
 
 const getSetting = (id: string) => {
   return settings.filter((item) => item.id === id)[0];
@@ -29,10 +30,7 @@ const getUri = (id: string, endPoint?: string, formId?: string) => {
   const { subdomain, format } = getSetting(id);
 
   let localBase = uriFormsBase.replace("{{subdomain}}", subdomain);
-  let localOther = uriFormsOther.replace(
-    "{{formid}}",
-    formId ? `/${formId}` : ""
-  );
+  let localOther = uriFormsOther.replace("{{formid}}", formId ? `/${formId}` : "");
   localOther = localOther.replace("{{endPoint}}", endPoint ? endPoint : "");
   localOther = localOther.replace("{{format}}", format ? format : "json");
   const uri = `${localBase}${localOther}`;

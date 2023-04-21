@@ -1,3 +1,4 @@
+import { currentActiveForms, currentDefaultForDisplay } from "../config/api";
 import { IForm } from "../hooks/useForms";
 
 export const isActive = (form: IForm): boolean => {
@@ -12,4 +13,11 @@ export const getFirstActive = (forms: IForm[]): IForm | undefined => {
     return isActive(form);
   });
   return activeForm.length > 0 ? activeForm[0] : undefined;
+};
+
+export const getDefultForDisplay = (forms: IForm[]): IForm | undefined => {
+  const defaultForm = forms.filter((form) => {
+    return form.Url === currentDefaultForDisplay;
+  });
+  return defaultForm.length > 0 ? defaultForm[0] : undefined;
 };
