@@ -1,3 +1,5 @@
+import { TTableRow } from "../components/entries/useSortableTable";
+
 export interface ITableColumn {
   key: string;
   label: string;
@@ -31,3 +33,9 @@ export const getActiveColumns = (active: boolean): ITableColumn[] => {
 export const getDisplayColumns = (): ITableColumn[] => {
   return displayColumns;
 };
+
+export function convertTable<T>(table: T[]) {
+  return table.map((row) => {
+    return row as TTableRow;
+  });
+}

@@ -24,20 +24,3 @@ const tableSort = ({ tableData, sortField, sortOrder }: ItableSortProps) => {
 };
 
 export default tableSort;
-
-// type Table = Record<string, any>[]; // Define Table as an array of objects with string keys and any values
-
-// function sortTable(table: Table, sortField: string, sortOrder: "asc" | "desc"): Table {
-//   return [...table].sort((a, b) => {
-//     const aValue = a[sortField];
-//     const bValue = b[sortField];
-//     if (aValue === bValue) {
-//       return 0;
-//     }
-//     if (sortOrder === "asc") {
-//       return aValue < bValue ? -1 : 1;
-//     } else {
-//       return aValue > bValue ? -1 : 1;
-//     }
-//   });
-// }

@@ -7,8 +7,9 @@ import { BsDownload } from "react-icons/bs";
 import downloadFile from "../services/download";
 import { useEffect, useState } from "react";
 import { currentActiveForms } from "../config/api";
-import { ITableColumn, getActiveColumns } from "../config/table";
+import { ITableColumn, convertTable, getActiveColumns } from "../config/table";
 import TableComp from "./entries/TableComp";
+import { TTable } from "./entries/useSortableTable";
 
 interface IFormEntriesProps {
   form: IForm;
@@ -36,8 +37,11 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
   }, [form]);
 
   let table: IEntry[] = [];
+  let convertedTable: TTable = [];
   if (isLoadingEntries === false && isLoadingFields === false) {
     table = mapEntries({ fields: fields, entries: entries });
+    // must be converted into TTable
+    convertedTable = convertTable<IEntry>(table);
   }
 
   const handleDownload = () => {
@@ -71,7 +75,7 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
           </Button>
         )}
       </HStack>
-      <TableComp columns={columns} data={table} />
+      <TableComp columns={columns} data={convertedTable} />
     </>
   );
 };
