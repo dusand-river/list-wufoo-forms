@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+export type TTableRow = Record<string, any>;
 export type TTable = Record<string, any>[];
 export type TSortOrder = "asc" | "desc";
 
