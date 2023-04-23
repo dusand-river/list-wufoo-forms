@@ -1,3 +1,4 @@
+import { TTableRow } from "../hooks/useSortableTable";
 import { ITableColumn } from "./interface";
 
 const displayColumns: ITableColumn[] = [
@@ -27,3 +28,9 @@ export const getActiveColumns = (active: boolean): ITableColumn[] => {
 export const getDisplayColumns = (): ITableColumn[] => {
   return displayColumns;
 };
+
+export function convertTable<T>(table: T[]) {
+  return table.map((row) => {
+    return row as TTableRow;
+  });
+}
