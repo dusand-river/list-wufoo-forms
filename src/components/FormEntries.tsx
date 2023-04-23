@@ -1,15 +1,21 @@
+import { useEffect, useState } from "react";
 import { Text, Button, HStack, Spinner } from "@chakra-ui/react";
+import mapEntries, { IEntry } from "../services/mapper";
+
 import { IForm } from "../hooks/useForms";
 import useFormEntries from "../hooks/useFormEntries";
 import useFormFields from "../hooks/useFormFields";
-import mapEntries, { IEntry } from "../services/mapper";
 import { BsDownload } from "react-icons/bs";
 import downloadFile from "../services/download";
-import { useEffect, useState } from "react";
 import { currentActiveForms } from "../config/api";
-import { ITableColumn, convertTable, getActiveColumns } from "../config/table";
-import TableComp from "./entries/TableComp";
-import { TTable } from "./entries/useSortableTable";
+
+import {
+  convertTable,
+  getActiveColumns,
+} from "../common/SortableTable/config/table";
+import { ITableColumn } from "../common/SortableTable/config/interface";
+import TableComp from "../common/SortableTable/components/TableComp";
+import { TTable } from "../common/SortableTable/hooks/useSortableTable";
 
 interface IFormEntriesProps {
   form: IForm;

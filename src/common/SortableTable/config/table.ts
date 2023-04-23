@@ -1,11 +1,6 @@
-import { TTableRow } from "../components/entries/useSortableTable";
+import { TTableRow } from "../hooks/useSortableTable";
+import { ITableColumn } from "./interface";
 
-export interface ITableColumn {
-  key: string;
-  label: string;
-  sortable: boolean;
-  active: boolean;
-}
 const displayColumns: ITableColumn[] = [
   { key: "name", label: "Helm Name", sortable: true, active: true },
   { key: "boat", label: "Boat Name", sortable: true, active: true },

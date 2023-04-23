@@ -1,10 +1,10 @@
 import React from "react";
 import { Table, TableContainer } from "@chakra-ui/react";
 
-import { ITableColumn } from "../../config/table";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
-import useSortableTable, { TTable } from "./useSortableTable";
+import { ITableColumn } from "../config/interface";
+import useSortableTable, { TTable } from "../hooks/useSortableTable";
 
 interface ITableCompProps {
   columns: ITableColumn[];

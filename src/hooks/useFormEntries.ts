@@ -3,12 +3,6 @@ import apiClient, { CanceledError } from "../services/apiClient";
 import api, { API_ID } from "../config/api";
 import { IForm } from "./useForms";
 
-// export interface Entries {
-//   : string;
-//   Type: string;
-//   isRequired: string;
-// }
-
 const useFormFields = (form: IForm) => {
   const [entries, setEntries] = useState<[]>([]);
   const [error, setError] = useState("");

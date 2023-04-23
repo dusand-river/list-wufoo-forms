@@ -3,7 +3,7 @@
 import { saveAs } from "file-saver";
 import dayjs from "dayjs";
 import { IEntry } from "./mapper";
-import { capitalizeFirstLetters, toPascalCase } from "./text";
+import { capitalizeFirstLetters, toPascalCase } from "../common/service/text";
 
 const downloadFile = (table: IEntry[], formName: string) => {
   const lines = tableToCsv(table);

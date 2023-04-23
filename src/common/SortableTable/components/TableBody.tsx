@@ -1,12 +1,11 @@
 import React from "react";
 import { Tbody, Tr, Td } from "@chakra-ui/react";
-import { IEntry } from "../../services/mapper";
-import { ITableColumn } from "../../config/table";
-import { TTable } from "./useSortableTable";
+import { IEntry, getName } from "../../../services/mapper";
+import { ITableColumn } from "../config/interface";
 
 interface ITableBodyProps {
   columns: ITableColumn[];
-  data: TTable;
+  data: IEntry[];
 }
 
 const TableBody: React.FC<ITableBodyProps> = ({

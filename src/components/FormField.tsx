@@ -1,25 +1,15 @@
 import { useEffect, useState } from "react";
-//import useFormFields, { FormFields } from "../hooks/useFormFields";
 import { IForm } from "../hooks/useForms";
 import apiClient, { CanceledError } from "../services/apiClient";
 import api, { API_ID } from "../config/api";
 import { Heading, List, ListItem, Text } from "@chakra-ui/react";
 import { FormFields } from "../hooks/useFormFields";
 
-// export interface Fields {
-//   Title: string;
-//   ID: string;
-//   Type: string;
-//   isRequired: string;
-// }
-
 interface Props {
   form: IForm | null;
 }
 
 const FormField = ({ form }: Props) => {
-  // const { fields, error, isLoading } = useFormFields(form);
-
   const [fields, setFields] = useState<FormFields[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);

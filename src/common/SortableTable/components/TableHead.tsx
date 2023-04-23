@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Thead, Tr, Th, Icon } from "@chakra-ui/react";
-import { ITableColumn } from "../../config/table";
 import { MdArrowUpward, MdArrowDownward } from "react-icons/md";
-import { TSortOrder } from "./useSortableTable";
+import { ITableColumn } from "../config/interface";
+import { TSortOrder } from "../hooks/useSortableTable";
 
 interface ITableHeadProps {
   columns: ITableColumn[];
@@ -33,7 +33,6 @@ const TableHead: React.FC<ITableHeadProps> = ({ columns, handleSorting }) => {
           columns.map((column: ITableColumn) => {
             return (
               <Th
-                // className={cl}
                 style={{ textAlign: "left" }}
                 key={column.key}
                 onClick={() => handleSortingChange(column)}

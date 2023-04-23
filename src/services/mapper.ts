@@ -1,6 +1,6 @@
 import { FormFields } from "../hooks/useFormFields";
 import setAdditionalSailwaveFields from "./sailwave";
-import { capitalizeFirstLetters } from "./text";
+import { capitalizeFirstLetters } from "../common/service/text";
 
 export interface IEntry {
   bhycId?: string;
