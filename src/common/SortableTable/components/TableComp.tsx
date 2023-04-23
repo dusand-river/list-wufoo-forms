@@ -11,7 +11,10 @@ interface ITableCompProps {
   data: TTable;
 }
 const TableComp: React.FC<ITableCompProps> = ({ columns, data }) => {
-  const { sortedTable: table, sort: handleSorting } = useSortableTable(data);
+  const { sortedTable: table, sort: handleSorting } = useSortableTable(
+    columns,
+    data
+  );
 
   return (
     <TableContainer>
