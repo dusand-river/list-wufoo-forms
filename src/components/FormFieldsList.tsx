@@ -1,5 +1,5 @@
 import { Heading, List, ListItem, Text } from "@chakra-ui/react";
-import useFormFields, { FormFields } from "../hooks/useFormFields";
+import useFormFields from "../hooks/useFormFields";
 import { IForm } from "../hooks/useForms";
 
 interface IFormFieldListProps {
@@ -7,7 +7,6 @@ interface IFormFieldListProps {
 }
 
 const FormFieldsList: React.FC<IFormFieldListProps> = ({ selectedForm }) => {
-  // const { selectedForm } = props;
   const { fields, error, isLoading } = useFormFields(selectedForm);
 
   if (error) return <Text>{error}</Text>;

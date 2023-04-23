@@ -1,4 +1,4 @@
-import { IEntry } from "./mapper";
+import { IEntry } from "../../../services/mapper";
 
 interface ItableSortProps {
   tableData: { [key: string]: any }[];

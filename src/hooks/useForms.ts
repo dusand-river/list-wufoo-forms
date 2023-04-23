@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/apiClient";
 import api, { API_ID } from "../config/api";
-import { getDefultForDisplay, getFirstActive } from "../services/forms";
+import { getDefultForDisplay } from "../services/forms";
 
 export interface IForm {
   Name: string;

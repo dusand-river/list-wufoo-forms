@@ -1,9 +1,5 @@
-export interface ITableColumn {
-  key: string;
-  label: string;
-  sortable: boolean;
-  active: boolean;
-}
+import { ITableColumn } from "./interface";
+
 const displayColumns: ITableColumn[] = [
   { key: "name", label: "Helm Name", sortable: true, active: true },
   { key: "boat", label: "Boat Name", sortable: true, active: true },

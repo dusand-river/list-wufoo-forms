@@ -1,7 +1,7 @@
 import React from "react";
 import { Tbody, Tr, Td } from "@chakra-ui/react";
-import { IEntry, getName } from "../../services/mapper";
-import { ITableColumn } from "../../config/table";
+import { IEntry, getName } from "../../../services/mapper";
+import { ITableColumn } from "../config/interface";
 
 interface ITableBodyProps {
   columns: ITableColumn[];

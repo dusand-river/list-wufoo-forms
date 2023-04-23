@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Thead, Tr, Th, Icon } from "@chakra-ui/react";
-import { ITableColumn } from "../../config/table";
 import { MdArrowUpward, MdArrowDownward } from "react-icons/md";
-import { TSortOrder } from "./useSortableTable";
+import { TSortOrder } from "../../common/SortableTable/hooks/useSortableTable";
+import { ITableColumn } from "../../common/SortableTable/config/interface";
 
 interface ITableHeadProps {
   columns: ITableColumn[];

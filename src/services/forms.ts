@@ -1,4 +1,4 @@
-import { currentActiveForms, currentDefaultForDisplay } from "../config/api";
+import { currentDefaultForDisplay } from "../config/api";
 import { IForm } from "../hooks/useForms";
 
 export const isActive = (form: IForm): boolean => {

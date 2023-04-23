@@ -7,8 +7,9 @@ import { BsDownload } from "react-icons/bs";
 import downloadFile from "../services/download";
 import { useEffect, useState } from "react";
 import { currentActiveForms } from "../config/api";
-import { ITableColumn, getActiveColumns } from "../config/table";
-import TableComp from "./entries/TableComp";
+import { getActiveColumns } from "../common/SortableTable/config/table";
+import { ITableColumn } from "../common/SortableTable/config/interface";
+import TableComp from "../common/SortableTable/components/TableComp";
 
 interface IFormEntriesProps {
   form: IForm;
