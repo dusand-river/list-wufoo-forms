@@ -18,7 +18,7 @@ const FormsList = ({ onSelectForm, selectedForm }: Props) => {
 
   return (
     <>
-      <Text marginBottom={3} fontSize="3xl">
+      <Text color="blue.200" marginBottom={3} fontSize="3xl">
         Forms
       </Text>
 
