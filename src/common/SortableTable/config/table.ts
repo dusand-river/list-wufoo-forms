@@ -7,7 +7,13 @@ const displayColumns: ITableColumn[] = [
   { key: "class", label: "Class", sortable: true, active: true },
   { key: "sailNo", label: "Sail number", sortable: true, active: true },
   { key: "rating", label: "Rating", sortable: false, active: false },
-  { key: "fleet", label: "Fleet", sortable: true, active: false },
+  {
+    key: "fleet",
+    label: "Fleet",
+    sortable: true,
+    active: false,
+    // sortByOrder: "asc",
+  },
   {
     key: "needPhrfCertificate",
     label: "Need PHRF",
