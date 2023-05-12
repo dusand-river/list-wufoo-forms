@@ -9,7 +9,7 @@ const setPhrfFleetDivision = (entry: IEntry): IEntry => {
   entry.needPhrfCertificate = "Yes";
   if (entry.selectionFleet?.substring(0, 10) === "Non-Flying") {
     let phrf: number = entry.phrfNFS ? parseInt(entry.phrfNFS) : 0;
-    if (phrf && phrf < 174 && phrf > 0) {
+    if (phrf && phrf < 175 && phrf > 0) {
       entry.fleet = "NFS1";
       entry.division = 3;
     } else {
