@@ -20,7 +20,7 @@ const setPhrfFleetDivision = (entry: IEntry): IEntry => {
   }
   if (entry.selectionFleet?.substring(0, 6) === "Flying") {
     let phrf: number = entry.phrfFS ? parseInt(entry.phrfFS) : 0;
-    if (phrf && phrf < 130 && phrf > 0) {
+    if (phrf && phrf < 125 && phrf > 0) {
       entry.fleet = "FS1";
       entry.division = 1;
     } else {
