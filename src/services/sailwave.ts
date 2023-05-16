@@ -9,7 +9,7 @@ const setPhrfFleetDivision = (entry: IEntry): IEntry => {
   entry.needPhrfCertificate = "Yes";
   if (entry.selectionFleet?.substring(0, 10) === "Non-Flying") {
     let phrf: number = entry.phrfNFS ? parseInt(entry.phrfNFS) : 0;
-    if (phrf && phrf < 175 && phrf > 0) {
+    if (phrf && phrf < 189 && phrf > 0) {
       entry.fleet = "NFS1";
       entry.division = 3;
     } else {
@@ -20,7 +20,7 @@ const setPhrfFleetDivision = (entry: IEntry): IEntry => {
   }
   if (entry.selectionFleet?.substring(0, 6) === "Flying") {
     let phrf: number = entry.phrfFS ? parseInt(entry.phrfFS) : 0;
-    if (phrf && phrf < 125 && phrf > 0) {
+    if (phrf && phrf < 126 && phrf > 0) {
       entry.fleet = "FS1";
       entry.division = 1;
     } else {
@@ -38,7 +38,8 @@ const setPhrfFleetDivision = (entry: IEntry): IEntry => {
   if (entry.selectionFleet?.substring(0, 5) === "Multi") {
     entry.fleet = "FS1";
     entry.division = 1;
-    entry.rating = "18";
+    let phrf: number = entry.phrfFS ? parseInt(entry.phrfFS) : 18;
+    entry.rating = phrf.toString();
     entry.needPhrfCertificate = "No";
   }
   if (entry.selectionFleet === "One Design (inclues PHRF Certificate)") {
