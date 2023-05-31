@@ -19,7 +19,7 @@ const TableBody: React.FC<ITableBodyProps> = ({
         data.map((data: IEntry, row) => {
           const rowId = data.bhycId ? data.bhycId : row;
           return (
-            <Tr key={rowId}>
+            <Tr key={row}>
               {columns.map((column: ITableColumn, colIdx) => {
                 return <Td key={colIdx}>{data[column.key]}</Td>;
               })}

@@ -16,9 +16,13 @@ const useFormFields = (form: IForm) => {
         .get(api.getUri(API_ID, "/entries", form.Hash), {
           auth: api.getAuth(API_ID),
           signal: controler.signal,
+          params: {
+            pageStart: 0,
+            pageSize: 50,
+          },
         })
         .then((res) => {
-          //console.log(res.data);
+          // console.log(res.data);
           setEntries(res.data.Entries);
           setLoading(false);
         })
