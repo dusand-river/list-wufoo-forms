@@ -1,4 +1,4 @@
-import { IEntry, Map } from "./mapper";
+import { IEntry } from "./mapper";
 
 const setAdditionalSailwaveFields = (entry: IEntry): IEntry => {
   // fleet, rating, division
