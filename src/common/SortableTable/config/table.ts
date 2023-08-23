@@ -12,8 +12,8 @@ const displayColumns: ITableColumn[] = [
     label: "Fleet",
     sortable: true,
     active: false,
-    // sortByOrder: "asc",
   },
+  { key: "division", label: "Start", sortable: true, active: true },
   {
     key: "needPhrfCertificate",
     label: "Need PHRF",
