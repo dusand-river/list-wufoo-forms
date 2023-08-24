@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/apiClient";
 import api, { API_ID } from "../config/api";
-import { getDefultForDisplay } from "../services/forms";
+import { getDefultForDisplay, getFirstActive } from "../services/forms";
 
 export interface IForm {
   Name: string;
@@ -31,8 +31,8 @@ const useForms = () => {
       .then((res) => {
         setForms(res.data.Forms);
         setLoading(false);
-        setFirstActive(getDefultForDisplay(res.data.Forms));
-        // setFirstActive(getFirstActive(res.data.Forms));
+        // setFirstActive(getDefultForDisplay(res.data.Forms));
+        setFirstActive(getFirstActive(res.data.Forms));
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;

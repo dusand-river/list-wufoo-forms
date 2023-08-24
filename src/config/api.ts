@@ -23,7 +23,8 @@ export const currentActiveForms = [
   "bhyc-club-racing-series-2023",
   "bronte-rocks-regatta-registration-2023",
 ];
-export const currentDefaultForDisplay = "bhyc-club-racing-series-2023";
+// export const currentDefaultForDisplay = "bhyc-club-racing-series-2023";
+export const currentDefaultForDisplay = "bronte-rocks-regatta-registration-2023";
 export const FormHash = {
   racingSeries: "s1vgy62f0qsua2y",
   bronteRocks: "wgu6ri40r48hzk",
