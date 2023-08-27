@@ -40,6 +40,8 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
     convertedTable = convertTable<IEntry>(table);
   }
 
+  const title = `${form?.Name} - ${table.length} entries`;
+
   const handleDownload = () => {
     downloadFile(table, form?.Name);
   };
@@ -52,7 +54,8 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
         )}
         {!isLoadingEntries && (
           <Text color="blue.200" fontSize="3xl">
-            {form?.Name}
+            {/* {form?.Name} */}
+            {title}
           </Text>
         )}
         {table.length > 0 && (
