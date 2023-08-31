@@ -39,16 +39,20 @@ const setPhrfFleetDivision = (entry: IEntry): IEntry => {
     entry.rating = phrf.toString();
   }
 
+  if (
+    entry.class?.substring(0, 5) === "Shark" &&
+    entry.selectionFleet?.substring(0, 6) === "Flying"
+  ) {
+    entry.fleet = "Shark";
+    entry.division = 3;
+    entry.rating = "219";
+    entry.needPhrfCertificate = "";
+  }
+
   if (entry.rating === "0") {
     entry.needPhrfCertificate = "Yes";
   }
-  // if (entry.selectionFleet?.substring(0, 5) === "Multi") {
-  //   entry.fleet = "FS1";
-  //   entry.division = 1;
-  //   let phrf: number = entry.phrfFS ? parseInt(entry.phrfFS) : 18;
-  //   entry.rating = phrf.toString();
-  //   entry.needPhrfCertificate = "No";
-  // }
+
   // if (entry.selectionFleet === "One Design (inclues PHRF Certificate)") {
   //   entry.fleet = "Shark";
   //   entry.division = 3;
