@@ -1,34 +1,34 @@
-import setAdditionalSailwaveFields from "./sailwaveBronteRocks";
-import { capitalizeFirstLetters } from "../common/service/text";
+import setAdditionalSailwaveFields from "../sailwave/sailwaveClubRacingSeries";
+import { capitalizeFirstLetters } from "../../common/service/text";
 import {
   IEntry,
   IMap,
   ImapEntriesProps,
   TmapperSimpleFields,
   getMapperSimpleFields,
-} from "./mapper";
-import { getName, getPhone } from "./formatter";
+} from "../mapper";
+import { getName, getPhone } from "../formatter";
 
-export const MapBR: IMap = {
+export const MapDefault: IMap = {
   bhycId: "Membership Number",
   name: "Name",
   boat: "Boat Name",
-  class: "Boat Type (i.e. C&C30, J 35):",
+  class: "Make/Model",
   sailNo: "Sail Number",
   email: "Email",
   firstName: "First",
   lastName: "Last",
-  phrfFS: "Rating",
-  phrfNFS: "Rating",
+  phrfFS: "Flying Sails ASP",
+  phrfNFS: "Non-Flying Sails ASP",
   homePhone: "Home Phone Number",
   cellPhone: "Cell Phone Number",
   insuranceCompany: "Insurance Company",
   insurancePolicyNumber: "Policy Number",
   phrfCertificate: "PHRF Certificate Number",
-  selectionFleet: "Flying Sails",
+  selectionFleet: "Flying Sails (includes PHRF Certificate)",
 };
 
-export const mapEntriesBR = ({ fields, entries, formHash }: ImapEntriesProps): IEntry[] => {
+const mapEntriesClubRacingSeries = ({ fields, entries, formHash }: ImapEntriesProps): IEntry[] => {
   const lines: IEntry[] = [];
 
   const msf = getMapperSimpleFields(fields);
@@ -45,9 +45,9 @@ const mapEntry = (entry: any, msf: TmapperSimpleFields[] | undefined): IEntry =>
 
   let row: TmapperSimpleFields = {};
 
-  for (let fld in MapBR) {
+  for (let fld in MapDefault) {
     let row1 = msf?.find((field) => {
-      return field.Title === MapBR[fld];
+      return field.Title === MapDefault[fld];
     });
     row = row1!;
 
@@ -67,4 +67,4 @@ const mapEntry = (entry: any, msf: TmapperSimpleFields[] | undefined): IEntry =>
   // return mapped;
 };
 
-export default mapEntriesBR;
+export default mapEntriesClubRacingSeries;

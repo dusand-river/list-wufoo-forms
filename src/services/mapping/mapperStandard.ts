@@ -1,13 +1,13 @@
-import setAdditionalSailwaveFields from "./sailwaveDefault";
-import { capitalizeFirstLetters } from "../common/service/text";
+import setAdditionalSailwaveFields from "../sailwave/sailwaveStandard";
+import { capitalizeFirstLetters } from "../../common/service/text";
 import {
   IEntry,
   IMap,
   ImapEntriesProps,
   TmapperSimpleFields,
   getMapperSimpleFields,
-} from "./mapper";
-import { getName, getPhone } from "./formatter";
+} from "../mapper";
+import { getName, getPhone } from "../formatter";
 
 export const MapDefault: IMap = {
   bhycId: "Membership Number",
@@ -18,17 +18,11 @@ export const MapDefault: IMap = {
   email: "Email",
   firstName: "First",
   lastName: "Last",
-  phrfFS: "Flying Sails ASP",
-  phrfNFS: "Non-Flying Sails ASP",
-  homePhone: "Home Phone Number",
-  cellPhone: "Cell Phone Number",
-  insuranceCompany: "Insurance Company",
-  insurancePolicyNumber: "Policy Number",
-  phrfCertificate: "PHRF Certificate Number",
-  selectionFleet: "Flying Sails (includes PHRF Certificate)",
+  phrf: "PHRF Rating",
+  selectionFleet: "Flying Sails",
 };
 
-export const mapEntriesDefault = ({ fields, entries, formHash }: ImapEntriesProps): IEntry[] => {
+export const mapEntriesStandard = ({ fields, entries, formHash }: ImapEntriesProps): IEntry[] => {
   const lines: IEntry[] = [];
 
   const msf = getMapperSimpleFields(fields);
@@ -61,10 +55,10 @@ const mapEntry = (entry: any, msf: TmapperSimpleFields[] | undefined): IEntry =>
   mapped.name = getName(mapped.lastName, mapped.firstName);
   mapped.boat = capitalizeFirstLetters(mapped.boat);
   // phone
-  mapped.phone = getPhone(mapped.homePhone, mapped.cellPhone);
+  // mapped.phone = getPhone(mapped.homePhone, mapped.cellPhone);
 
   return setAdditionalSailwaveFields(mapped);
   // return mapped;
 };
 
-export default mapEntriesDefault;
+export default mapEntriesStandard;

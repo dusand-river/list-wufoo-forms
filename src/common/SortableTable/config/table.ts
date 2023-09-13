@@ -6,14 +6,10 @@ const displayColumns: ITableColumn[] = [
   { key: "boat", label: "Boat Name", sortable: true, active: true },
   { key: "class", label: "Class", sortable: true, active: true },
   { key: "sailNo", label: "Sail number", sortable: true, active: true },
-  { key: "rating", label: "Rating", sortable: false, active: false },
-  {
-    key: "fleet",
-    label: "Fleet",
-    sortable: true,
-    active: false,
-  },
-  { key: "division", label: "Start", sortable: true, active: true },
+  { key: "fleet", label: "Fleet", sortable: true, active: true },
+  { key: "rating", label: "Rating", sortable: false, active: true },
+
+  { key: "division", label: "Start", sortable: true, active: false },
   {
     key: "needPhrfCertificate",
     label: "Need PHRF",

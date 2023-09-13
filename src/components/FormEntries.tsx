@@ -25,9 +25,6 @@ const FormEntries: React.FC<IFormEntriesProps> = ({ form }) => {
   const [columns, setColumns] = useState<ITableColumn[]>([]);
 
   useEffect(() => {
-    // const active = currentActiveForms.indexOf(form.Url) >= 0 ? true : false;
-    // setActive(active);
-    // const cols = getActiveColumns(active);
     const cols = getActiveColumns(currentActiveForms.indexOf(form.Url) >= 0 ? true : false);
     setColumns(cols);
   }, [form]);
