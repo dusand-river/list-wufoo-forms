@@ -3,6 +3,7 @@ import { mapEntriesBR } from "./mapping/mapperBronteRocks";
 import { FormHash } from "../config/api";
 import mapEntriesClubRacingSeries from "./mapping/mapperClubRacingSeries";
 import { mapEntriesStandard } from "./mapping/mapperStandard";
+import mapEntriesDieHards from "./mapping/mapperDieHards";
 
 export interface IEntry {
   bhycId?: string;
@@ -72,6 +73,10 @@ export const mapEntries = ({ fields, entries, formHash }: ImapEntriesProps): IEn
     case FormHash.racingSeries:
       // lines = mapEntriesClubRacingSeries({ fields, entries, formHash: formHash });
       lines = mapEntriesClubRacingSeries({ fields, entries, formHash });
+      break;
+    case FormHash.dieHards:
+      // lines = mapEntriesClubRacingSeries({ fields, entries, formHash: formHash });
+      lines = mapEntriesDieHards({ fields, entries, formHash });
       break;
 
     default:

@@ -30,7 +30,7 @@ export const FormHash = {
   bronteRocks: "wgu6ri40r48hzk",
   pursuitRace: "r12sbcar18k7riw",
   turkeyRace: "r1uwpv240ezukry",
-  dieHards: "r1uwpv240ezukry",
+  dieHards: "r1sqy6ou0yptubq",
 };
 
 const getSetting = (id: string) => {
