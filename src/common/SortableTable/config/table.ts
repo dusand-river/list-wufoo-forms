@@ -11,6 +11,12 @@ const displayColumns: ITableColumn[] = [
 
   { key: "division", label: "Start", sortable: true, active: false },
   {
+    key: "registerFor",
+    label: "Series",
+    sortable: true,
+    active: true,
+  },
+  {
     key: "needPhrfCertificate",
     label: "Need PHRF",
     sortable: false,

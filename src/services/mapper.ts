@@ -4,6 +4,7 @@ import { FormHash } from "../config/api";
 import mapEntriesClubRacingSeries from "./mapping/mapperClubRacingSeries";
 import { mapEntriesStandard } from "./mapping/mapperStandard";
 import mapEntriesDieHards from "./mapping/mapperDieHards";
+import mapEntriesClubRacingSeries2024 from "./mapping/mapperClubRacingSeries2024";
 
 export interface IEntry {
   bhycId?: string;
@@ -73,6 +74,10 @@ export const mapEntries = ({ fields, entries, formHash }: ImapEntriesProps): IEn
     case FormHash.racingSeries:
       // lines = mapEntriesClubRacingSeries({ fields, entries, formHash: formHash });
       lines = mapEntriesClubRacingSeries({ fields, entries, formHash });
+      break;
+    case FormHash.racingSeries2024:
+      // lines = mapEntriesClubRacingSeries({ fields, entries, formHash: formHash });
+      lines = mapEntriesClubRacingSeries2024({ fields, entries, formHash });
       break;
     case FormHash.dieHards:
       // lines = mapEntriesClubRacingSeries({ fields, entries, formHash: formHash });
