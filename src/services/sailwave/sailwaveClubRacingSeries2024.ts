@@ -9,7 +9,7 @@ const setPhrfFleetDivision = (entry: IEntry): IEntry => {
   entry.needPhrfCertificate = "Yes";
   if (entry.selectionFleet?.substring(0, 10) === "Non-Flying") {
     let phrf: number = entry.phrfNFS ? parseInt(entry.phrfNFS) : 0;
-    if (phrf && phrf < 160 && phrf > 0) {
+    if (phrf && phrf < 194 && phrf > 0) {
       entry.fleet = "NFS1";
       entry.division = 3;
     } else {
@@ -20,15 +20,15 @@ const setPhrfFleetDivision = (entry: IEntry): IEntry => {
   }
   if (entry.selectionFleet?.substring(0, 6) === "Flying") {
     let phrf: number = entry.phrfFS ? parseInt(entry.phrfFS) : 0;
-    if (phrf && phrf <= 129 && phrf > 0) {
+    if (phrf && phrf < 129 && phrf > 0) {
       entry.fleet = "FS1";
       entry.division = 1;
-    } else if (phrf && phrf <= 166 && phrf > 129) {
+    } else if (phrf && phrf <= 166 && phrf >= 129) {
       entry.fleet = "FS2";
       entry.division = 3;
     } else {
       entry.fleet = "FS3";
-      entry.division = 3;
+      entry.division = 2;
     }
     entry.rating = phrf.toString();
   }
