@@ -14,3 +14,7 @@ export const toPascalCase = (input: string): string => {
     .replace(/\s/g, "")
     .replace(/^(.)/, (_, match) => match.toUpperCase());
 };
+
+export const toUpper = (input: string): string => {
+  return input.toUpperCase();
+};

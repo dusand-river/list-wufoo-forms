@@ -1,5 +1,5 @@
 import setAdditionalSailwaveFields from "../sailwave/sailwaveBronteRocks";
-import { capitalizeFirstLetters } from "../../common/service/text";
+import { capitalizeFirstLetters, toUpper } from "../../common/service/text";
 import {
   IEntry,
   IMap,
@@ -13,7 +13,7 @@ export const MapBR: IMap = {
   bhycId: "Membership Number",
   name: "Name",
   boat: "Boat Name",
-  class: "Boat Type (i.e. C&C30, J 35):",
+  class: "Boat Model (i.e. C&C30, J 35):",
   sailNo: "Sail Number",
   email: "Email",
   firstName: "First",
@@ -21,11 +21,15 @@ export const MapBR: IMap = {
   phrfFS: "Rating",
   phrfNFS: "Rating",
   homePhone: "Home Phone Number",
-  cellPhone: "Cell Phone Number",
+  cellPhone: "Phone Number",
   insuranceCompany: "Insurance Company",
   insurancePolicyNumber: "Policy Number",
   phrfCertificate: "PHRF Certificate Number",
   selectionFleet: "Flying Sails",
+  bronteRocks: "Saturday Aug 30th - Bronte Rocks",
+  candcRace: "Sunday Aug 31st - C&C Owners at Bronte Rocks",
+  handicap: "PHRF",
+  club: "Yacht Club",
 };
 
 export const mapEntriesBR = ({ fields, entries, formHash }: ImapEntriesProps): IEntry[] => {
@@ -62,6 +66,15 @@ const mapEntry = (entry: any, msf: TmapperSimpleFields[] | undefined): IEntry =>
   mapped.boat = capitalizeFirstLetters(mapped.boat);
   // phone
   mapped.phone = getPhone(mapped.homePhone, mapped.cellPhone);
+  // handicap
+  if (mapped.handicap == "One Design") {
+    mapped.selectionFleet = mapped.handicap;
+  }
+  // race
+  mapped.bronteRocks = mapped.bronteRocks ? "Yes" : "";
+  mapped.candcRace = mapped.candcRace ? "Yes" : "";
+  //Club
+  if (mapped.club) mapped.club = toUpper(mapped.club);
 
   return setAdditionalSailwaveFields(mapped);
   // return mapped;
